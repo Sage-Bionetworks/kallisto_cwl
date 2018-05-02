@@ -12,6 +12,11 @@ inputs:
     type: File
     inputBinding:
       prefix: "--index"
+
+  threads:
+    type: int
+    inputBinding:
+      prefix: "--threads"
      
   fastqs:
     type: File[]
