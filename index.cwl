@@ -16,7 +16,8 @@ inputs:
       prefix: "--index"
     
   fasta_file:
-   type: File
+    type: File
+    inputBinding: {}
    
 outputs:
   index:
