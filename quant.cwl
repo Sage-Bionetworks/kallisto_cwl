@@ -18,8 +18,15 @@ inputs:
     inputBinding:
       prefix: "--threads"
      
-  fastqs:
-    type: File[]
+  fastq1:
+    type: File
+    inputBinding: 
+      position: 4
+
+  fastq2:
+    type: File
+    inputBinding: 
+      position: 5
 
 baseCommand: [ kallisto, quant ]
 
@@ -31,13 +38,3 @@ outputs:
     type: File
     outputBinding:
       glob: out/abundance.h5
-
-  tsv:
-    type: File
-    outputBinding:
-      glob: abundances.tsv
-
-  log:
-    type: File
-    outputBinding:
-      glob: run_info.json
