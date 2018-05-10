@@ -14,7 +14,7 @@ inputs:
       prefix: "--index"
 
   threads:
-    type: int
+    type: ["null", int]
     inputBinding:
       prefix: "--threads"
      
