@@ -5,18 +5,17 @@ library(stringr)
 
 args <- commandArgs(trailingOnly=TRUE)
 manifest <- args[1]
+manifest_df <- readr::read_tsv(manifest)
 
-yamls <- list.files() %>% 
-    purrr::keep(str_detect(., ".yaml$")) 
-
-logs <- stringr::str_replace(yamls, "yaml", "log")
-
-do_cwl <- function(yaml, log){
+do_cwl <- function(row){
     stderr <- system2(
         "cwltool", 
-        args = c(cwl_file, yaml), 
+        args = c("kallisto_cwl/quant.cwl", row$yaml), 
         stderr = T)
-    writeLines(stderr, log)
+    writeLines(stderr, row$log)
+    file.rename("abundance.h5", row$h5)
 }
 
-purrr::walk2(yamls, logs, do_cwl)
+manifest_df %>% 
+    split(1:nrow(.)) %>% 
+    purrr::walk(do_cwl)
