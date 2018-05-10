@@ -23,7 +23,7 @@ create_kallisto_quant_yaml <- function(
     )
     
     option_list = 
-        list("threads" = threads) %>% 
+        list("threads" = as.integer(threads)) %>% 
         purrr::discard(is.null)
     yaml::write_yaml(c(arg_list, option_list), yaml_file)
 }
