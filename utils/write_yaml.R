@@ -34,7 +34,7 @@ create_kallisto_workflow_yaml <- function(
     
     arg_list = list(
         "FASTQ_FILE1" = file_to_yaml_file(fastq1),
-        "FASTQ_FILE1" = file_to_yaml_file(fastq2),
+        "FASTQ_FILE2" = file_to_yaml_file(fastq2),
         "INDEX_FILE" = file_to_yaml_file(index)
     )
     
