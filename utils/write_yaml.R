@@ -28,6 +28,22 @@ create_kallisto_quant_yaml <- function(
     yaml::write_yaml(c(arg_list, option_list), yaml_file)
 }
 
+create_kallisto_workflow_yaml <- function(
+    yaml_file, fastq1, fastq2, index,
+    threads = NULL){
+    
+    arg_list = list(
+        "FASTQ_FILE1" = file_to_yaml_file(fastq1),
+        "FASTQ_FILE1" = file_to_yaml_file(fastq2),
+        "INDEX_FILE" = file_to_yaml_file(index)
+    )
+    
+    option_list = 
+        list("THREADS" = as.integer(threads)) %>% 
+        purrr::discard(is.null)
+    yaml::write_yaml(c(arg_list, option_list), yaml_file)
+}
+
 create_kallisto_h5dump_yaml <- function(h5){
     arg_list = list("h5" = file_to_yaml_file(h5))
     yaml::write_yaml(h5, yaml_file)
