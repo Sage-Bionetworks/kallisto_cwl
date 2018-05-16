@@ -2,10 +2,6 @@
 cwlVersion: v1.0
 class: Workflow
 
-hints:
-  DockerRequirement:
-    dockerPull: insilicodb/kallisto
-
 inputs:
   INDEX_FILE: File
   THREADS: int
